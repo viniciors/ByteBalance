@@ -68,11 +68,11 @@ def exibeMenu():
                  ----------------------------------
           """)
     
-def imc(peso, altura):
+def imc(peso, altura):              #Realiza o cálculo do IMC de acordo com as informações fornecidas no cadastro
     imc = peso / altura ** 2
     return imc
 
-def classificacaoImc(imc):
+def classificacaoImc(imc):          #Filtra o IMC para fornecer uma classificação
     if imc < 18.5:
         return "Abaixo do peso"
     
@@ -123,16 +123,53 @@ def somaCalorias(caloriasAlimento):                # Inicia um loop para o usuá
  
     print(f"Calorias totais: {caloriasTotais}")
     
-def main():
-    peso = float(input("Digite seu peso em Kg: "))
-    altura = float(input("Digite sua altura em m: "))
-    resultado = imc(peso, altura)
-    classificacao = classificacaoImc(resultado)
-    quantidade = copoDeAgua(peso)
-    print(f"Seu IMC é {resultado:.2f}")
-    print(f"Sua classificação é {classificacao}")
-    print(f"Você deve tomar {quantidade:.2f}")
+def main():                         
+    cadastro()
+    exibeMenu()
+    while True:
+        try:
+            opcao = int(input("Navegue pelo sistema. Escolha uma opção acima: "))
+            if opcao == 0:
+                print("Sistema encerrado.")
+                break
+
+            elif opcao == 1:
+                resultadoImc = imc(peso, altura)
+                print(f"O seu Índice de Massa Corporal é {resultadoImc:.2f}, e sua classificação é {classificacaoImc(resultadoImc)}.")
+
+            elif opcao == 2:
+                resultadoAgua = copoDeAgua(peso)
+                print(f"Você devem ingerir uma quantidade de {resultadoAgua:.2f}L.")
+
+            elif opcao == 3:
+                somaCalorias(caloriasAlimento)
+
+            else:
+                print("Opção inválida.")
+        except ValueError:
+            print("ERRO. É necessário digitar um número inteiro.")
+
+caloriasAlimento = {"abobrinha": 33, "beterraba cozida": 35, "morango": 4, "guacamole": 120, "queijo ricota": 174, "sopa de ervilha": 82, "maçã verde": 95,
+    "azeite de abacate": 120, "café preto": 2, "abacaxi em cubos": 83, "berinjela": 20, "barra de cereal": 100, "cebola verde": 32,
+    "manteiga de amendoim": 94, "tomate-cereja": 15, "ovos mexidos": 92, "alho-poró": 54, "tangerina": 47, "tempeh": 195, "couve-de-bruxelas": 38,
+    "vinagre balsâmico": 14, "sorvete de baunilha": 137, "baguete integral": 82, "panquecas de trigo integral": 154, "muffin de mirtilo": 240,
+    "pasta de amendoim": 190, "sopa de peixe": 230, "brócolis cozidos no vapor": 55, "camarão grelhado": 84, "frango assado": 165, 
+    "lasanha de espinafre": 215, "frutas cítricas": 60, "bagel de grãos inteiros": 200, "pepino em conserva": 2, "pão de centeio": 65,
+    "hummus": 27, "aspargo assado": 232, "peru assado": 135, "salada de frutas": 120, "molho de tomate": 30, "barra de proteína": 200, "repolho roxo": 22,
+    "queijo feta": 99, "uvas vermelhas": 69, "alho-poró": 54, "molho de soja": 8, "batata assada": 130, "sopa de legumes": 80, "bife grelhado": 250,
+    "abacate em fatias": 50, "purê de abóbora": 49, "cevada": 354, "vagem": 30, "lentilhas": 230, "mousse de chocolate": 250, "batata frita": 365,
+    "biscoitos integrais": 50, "feijão cozido": 225, "beterraba": 35, "melão": 50, "kiwi": 61, "muffin de banana": 134, "frango ao curry": 260,
+    "arroz frito": 235, "tortilla integral": 50, "iogurte de coco": 120, "arroz basmati": 190, "camarão scampi": 240, "geléia de morango": 50,
+    "hamburguer de peru": 220, "chá de camomila": 2, "manteiga de amêndoa": 98, "baguete de trigo integral": 250, "alho-poró": 54,
+    "molho de maçã": 49, "peito de frango assado": 165, "muffin inglês integral": 140, "sopa de abóbora": 80, "abacate": 234,
+    "queijo suíço": 106, "toranja": 52, "repolho chinês": 15, "pepitas de abóbora": 30, "ravióli de queijo": 220, "pera cozida": 100,
+    "sopa de cogumelos": 66, "quinoa": 222, "pepino em fatias": 8, "leite de amêndoa": 60, "queijo suíço": 106, "chá de hortelã": 2,
+    "rabanete": 12, "tapioca": 96, "pimentão vermelho": 31, "hambúrguer vegetariano": 150, "avelã": 176, "azeitona verde": 4,
+    "salsicha italiana": 230, "pão pita integral": 80, "uva passa": 299, "sopa de feijão": 200, "torta de maçã": 250,
+    "bagel de mirtilo": 250, "chucrute": 19, "sopa de tomate": 74,"banana": 105, "maçã": 95, "arroz": 130, "frango": 165, "batata": 110,
+    "cenoura": 30, "salada": 15, "iogurte": 150, "pão integral": 70, "salmão": 206, "abacate": 240, "espinafre": 23, "ovos cozidos": 68,
+    "aveia": 150, "alface": 5,  "queijo cheddar": 110, "tomate": 22, "pêssego": 59, "melancia": 30, "abacaxi": 50, "pistache": 156,
+    "morango": 4, "brócolis": 55, "pera": 100, "uva": 69, "castanha-do-pará": 69, "atum enlatado": 179, "kiwi": 61, "cenoura cozida": 54,
+    "sopa de lentilha": 165}            #Dicionário com alguns alimentos e suas calorias
 
 main()
-
-
