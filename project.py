@@ -95,6 +95,34 @@ def copoDeAgua(peso):               #Calcula a quantidade de água a ser ingerid
    quantidade = peso * 0.035
    return quantidade
 
+def verificaAlimento(alimento, caloriasAlimento):  # Verifica se o alimento está no dicionário criado
+    if alimento in caloriasAlimento:
+        return caloriasAlimento[alimento]
+    
+    else:
+        return 0
+
+def somaCalorias(caloriasAlimento):                # Inicia um loop para o usuário digitar o alimento e ver a soma total de calorias consumidas
+    caloriasTotais = 0
+ 
+    while True:
+        alimento = input("Digite o nome do alimento para calcular as calorias ou 'sair' para encerrar: ").lower()
+ 
+        if alimento == 'sair':
+            break
+        
+        caloriasAlimentoAtual = verificaAlimento(alimento, caloriasAlimento)
+ 
+        caloriasTotais += caloriasAlimentoAtual
+ 
+        if caloriasAlimentoAtual != 0:
+            print(f"Calorias do {alimento}: {caloriasAlimentoAtual}")
+ 
+        else:
+            print("Alimento não encontrado no banco de dados.")
+ 
+    print(f"Calorias totais: {caloriasTotais}")
+    
 def main():
     peso = float(input("Digite seu peso em Kg: "))
     altura = float(input("Digite sua altura em m: "))
